@@ -13,6 +13,8 @@ gem 'faraday'
 gem 'fast_jsonapi'
 gem 'figaro'
 gem 'jbuilder', '~> 2.7'
+gem 'devise'
+gem 'bootstrap', '~> 4.5.0'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 
