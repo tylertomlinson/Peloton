@@ -15,8 +15,7 @@ gem 'figaro'
 gem 'jbuilder', '~> 2.7'
 gem 'devise'
 gem 'bootstrap', '~> 4.5.0'
-
-gem 'bootsnap', '>= 1.4.2', require: false
+gem "twitter-bootstrap-rails"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
