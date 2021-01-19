@@ -1,34 +1,23 @@
 class RidesController < ApplicationController
-  before_action :set_ride, only: [:show, :edit, :update, :destroy]
 
-  # GET /rides
-  # GET /rides.json
   def index
     @rides = Ride.all
   end
 
-  # GET /rides/1
-  # GET /rides/1.json
   def show
+    @ride = Ride.find(params[:id])
   end
 
-  # GET /rides/new
   def new
-    @ride = Ride.new
+    @user = current_user
   end
 
-  # GET /rides/1/edit
-  def edit
-  end
-
-  # POST /rides
-  # POST /rides.json
   def create
-    @ride = current_user.rides.new(ride_params)
-
+    user = current_user
+    @ride = user.rides.create(ride_params)
     respond_to do |format|
       if @ride.save
-        format.html { redirect_to @ride, notice: 'Ride was successfully created.' }
+        format.html { redirect_to "/rides", notice: 'Your ride was successfully created.' }
         format.json { render :show, status: :created, location: @ride }
       else
         format.html { render :new }
@@ -37,38 +26,28 @@ class RidesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /rides/1
-  # PATCH/PUT /rides/1.json
-  def update
-    respond_to do |format|
-      if @ride.update(ride_params)
-        format.html { redirect_to @ride, notice: 'Ride was successfully updated.' }
-        format.json { render :show, status: :ok, location: @ride }
-      else
-        format.html { render :edit }
-        format.json { render json: @ride.errors, status: :unprocessable_entity }
-      end
-    end
+  def edit
+    @ride = Ride.find(params[:id])
   end
 
-  # DELETE /rides/1
-  # DELETE /rides/1.json
+  def update
+    ride = Ride.find(params[:id])
+    ride.update(ride_params)
+
+    ride.save
+
+    redirect_to "/rides/#{ride.id}"
+  end
+
   def destroy
-    @ride.destroy
-    respond_to do |format|
-      format.html { redirect_to rides_url, notice: 'Ride was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    ride = Ride.find(params[:id])
+    ride.destroy
+    redirect_to "/rides"
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_ride
-      @ride = Ride.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def ride_params
-      params.fetch(:ride, {})
-    end
+  def ride_params
+    params.permit(:date, :duration, :distance, :average_speed)
+  end
 end

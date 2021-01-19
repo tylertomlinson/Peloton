@@ -2,6 +2,7 @@
 
 <div class="col-8 offset-2 col-sm-6 offset-sm-3">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
     <div class="field">
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control m-2' %>

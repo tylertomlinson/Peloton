@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
-  # devise_for :users
+  post '/users/:id/rides', to: 'rides#create'
+  get '/users/:id/rides/new', to: 'rides#new'
+  resources :rides
   devise_for :users do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
   root 'pages#home'
-  resources :rides
+
+
 end

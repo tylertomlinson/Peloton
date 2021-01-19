@@ -1,7 +1,7 @@
 class CreateRides < ActiveRecord::Migration[6.0]
   def change
     create_table :rides do |t|
-      t.datetime :date
+      t.text :date
       t.text :duration
       t.text :distance
       t.text :average_speed
