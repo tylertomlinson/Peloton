@@ -1,4 +1,86 @@
 
-<li class="nav-item">
-    <a class="nav-link" <%= link_to 'Edit Profile', edit_user_registration_path, :class => 'navbar-item' %> </a>
-</li>
+<div class ="dashboard">
+<%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn-primary" %>
+<%= link_to 'Add New Ride', new_ride_path, class: "btn btn-primary" %>
+<%= link_to 'Leaderboard', rides_path, class: "btn btn-primary" %>
+</div>
+
+
+<div class="container">
+    <div class="row my-3">
+        <div class="col">
+            <h4>Bootstrap 4 Chart.js - Line Chart</h4>
+        </div>
+    </div>
+    <div class="row my-2">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <canvas id="chLine" height="100"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+
+// chart colors
+var colors = ['#007bff','#28a745','#333333','#c3e6cb','#dc3545','#6c757d'];
+
+/* large line chart */
+var chLine = document.getElementById("chLine");
+var chartData = {
+  labels: ["S", "M", "T", "W", "T", "F", "S"],
+  datasets: [{
+    data: [589, 445, 483, 503, 689, 692, 634],
+    backgroundColor: 'transparent',
+    borderColor: colors[0],
+    borderWidth: 4,
+    pointBackgroundColor: colors[0]
+  },
+  {
+    data: [639, 465, 493, 478, 589, 632, 674],
+    backgroundColor: colors[3],
+    borderColor: colors[1],
+    borderWidth: 4,
+    pointBackgroundColor: colors[1]
+  }]
+};
+
+if (chLine) {
+  new Chart(chLine, {
+  type: 'line',
+  data: chartData,
+  options: {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: false
+        }
+      }]
+    },
+    legend: {
+      display: false
+    }
+  }
+  });
+}
+</script>
+
+
+
+
+
+
+<style>
+  body {
+    background-image: url('https://wsdg.com/wp-content/uploads/peleton-flagship-spinning-center-4.jpg');
+  }
+
+  .dashboard {
+
+  }
+</style>

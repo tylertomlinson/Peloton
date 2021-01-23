@@ -4,7 +4,7 @@
     <title>Peloton</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'true' %>
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
    </head>
@@ -29,7 +29,6 @@
             </li>
         </ul>
     </div>
-
     <% else %>
           <ul class="navbar-nav ml-auto">
               <li class="nav-item4">
@@ -38,6 +37,8 @@
           </ul>
     <% end %>
 </nav>
-    <%= yield %>
+<%= yield %>
+
   </body>
+
 </html>
