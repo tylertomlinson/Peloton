@@ -3,29 +3,37 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
+  <div class="form">
+    <i class="fas fa-user"></i>
     <%= f.label :username %><br />
-    <%= f.text_field :username, autofocus: true, autocomplete: "name", class: 'form-control m-2'  %>
+    <%= f.text_field :username, autofocus: true, autocomplete: "name", class: 'form-control' %>
   </div>
-
-  <div class="field">
+<br />
+  <div class="form">
+    <i class="fas fa-envelope prefix"></i>
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control m-2'  %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control'  %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password, placeholder: "6 characters minimum", autocomplete: "new-password", class: 'form-control m-2'  %>
+<br />
+  <div class="form">
+    <i class="fas fa-unlock"></i>
+    <%= f.label :password %><br>
+    <%= f.password_field :password, placeholder: "6 characters minimum", autocomplete: "new-password", class: 'form-control' %>
   </div>
+<br />
+  <div class="form">
+    <i class="fas fa-lock prefix"></i>
+    <%= f.label :password_confirmation %><br/>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control'%>
+  </div>
+<br />
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control m-2'  %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up", class: 'btn btn-primary m-2'  %>
-  </div>
+<div class="actions">
+  <%= button_tag( class: "btn btn-info") do %>
+    Login <i class="fas fa-sign-in-alt ml-1"></i>
+  <% end %>
+</div>
 <% end %>
 <hr>
 <%= render "devise/shared/links" %>
