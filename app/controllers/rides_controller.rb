@@ -9,7 +9,7 @@ class RidesController < ApplicationController
   end
 
   def new
-    @user = current_user
+    @ride = Ride.new
   end
 
   def create
@@ -36,7 +36,7 @@ class RidesController < ApplicationController
 
     ride.save
 
-    redirect_to "/rides/#{ride.id}"
+    redirect_to "/rides"
   end
 
   def destroy

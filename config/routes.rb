@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  post '/users/:id/rides', to: 'rides#create'
-  get '/users/:id/rides/new', to: 'rides#new'
-
+  # post '/users/:id/rides', to: 'rides#create'
+  # get '/users/:id/rides/new', to: 'rides#new'
+  # 
   resources :rides
 
   devise_for :users do

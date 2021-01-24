@@ -1,29 +1,29 @@
-<%= form_with url: "/users/#{@user.id}/rides", method: :post do |form| %>
+<%= form_with(model: ride, local: true) do |form| %>
   <div class="field">
     <label class="label">Date</label>
     <div class="control">
-      <%= text_field_tag :date %>
+      <%= text_field_tag :date, (@ride.date if @ride) %>
     </div>
   </div>
   <br>
   <div class="field">
-    <label class="label">Duration</label>
+      <label class="label">Duration</label>
     <div class="control">
-      <%= form.select :duration, ['15 minutes', '20 minutes', "30 minutes", "45 minutes", "60 minutes"], :include_blank => true %>
+      <%= form.select :duration, ['15 minutes', '20 minutes', "30 minutes", "45 minutes", "60 minutes"] %>
     </div>
   </div>
   <br>
   <div class="field">
     <label class="label">Distance</label>
     <div class="control">
-      <%= text_field_tag :distance %>
+      <%= text_field_tag :distance, (@ride.distance if @ride) %>
     </div>
   </div>
   <br>
   <div class="field">
     <label class="label">Average Speed</label>
     <div class="control">
-      <%= text_field_tag :average_speed %>
+      <%= text_field_tag :average_speed, (@ride.average_speed if @ride) %>
     </div>
   </div>
 
